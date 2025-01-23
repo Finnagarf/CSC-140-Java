@@ -1,32 +1,44 @@
 package unit2project;
 
 import java.util.Scanner;
-class Main {
+
+public class Unit2project {
   public static void main(String[] args) {
-    System.out.println("Hello world!");
-  
-    //the variables I need
-    String topping1, topping2, topping3;
-    double total, discount;
+    double total = 0.0;
     Scanner scan = new Scanner(System.in);
-    //take user input
-    System.out.print("Enter your topping: ");
-    topping1 = scan.nextLine();
-    
-// calculate total and discount
-// yogurt adds $1.00,
-// tomato adds $0.50,
-// lettuce adds $.30,
-// skittles add $0.75
-    total = 0;
-    if(topping1.equals("yogurt")){
-      total = total + 1.00;
+
+    System.out.println("Welcome to Chudson's Potato Bar!");
+    System.out.println("Available toppings: Yogurt, Tomato, Lettuce, Skittles");
+
+
+    for (int i = 0; i < 3; i++) {
+      System.out.print("Enter topping #" + (i + 1) + ": ");
+      String topping = scan.nextLine().toLowerCase(); 
+
+      if (topping.equals("yogurt")) {
+        total += 1.00;
+      } else if (topping.equals("tomato")) {
+        total += 0.50;
+      } else if (topping.equals("lettuce")) {
+        total += 0.30;
+      } else if (topping.equals("skittles")) {
+        total += 0.75;
+      } else {
+        System.out.println("Invalid topping: " + topping + ".");
+        i--; 
+      }
     }
 
-    //calculate the discount
-    
-    //output the results
-    System.out.print("The total is "+total);
-    
+    System.out.println("Total cost of toppings: $" + total);
+
+    double discount = 0;
+    if (total >= 1.00) {
+      discount = total * 0.10;
+      total -= discount;
+      System.out.println("A 10% discount has been applied!");
+    }
+
+    System.out.println("Discount: -$" + discount);
+    System.out.println("Final total after discount: $" + total);
   }
 }
